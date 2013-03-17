@@ -1,4 +1,4 @@
-package ro.msgdemo.app;
+package ro.msgdemo.app.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
