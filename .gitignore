@@ -1,15 +1,4 @@
 
-target
-#.project
-#.classpath
-#.settings
-#.springBeans
-
-*.iml
-/.idea/
+target/
 bin/
-*.log
-/.classpath
-/.project
-/.springBeans
-/.settings
+
