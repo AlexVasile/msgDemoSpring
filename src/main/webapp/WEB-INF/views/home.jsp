@@ -5,10 +5,13 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<a href="postMessageForm">Post Message</a>
 
-<P>  The time on the server is ${serverTime}. </P>
+<h2>All messages</h2>
+
+<c:forEach items="${msgs}" var="msg">
+    <p>${msg.content} <br> posted on ${msg.date} by ${msg.user.name}</p>
+</c:forEach>
+
 </body>
 </html>

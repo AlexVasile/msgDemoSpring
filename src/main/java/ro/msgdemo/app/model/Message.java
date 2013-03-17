@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class Message {
 
 	private int id;
-	private Date insertDate = new Date();
+	private String content;
+	private Date date = new Date();
 	private User user;
 	
 	@Id @GeneratedValue (strategy=GenerationType.AUTO)
@@ -31,13 +32,21 @@ public class Message {
 		this.id = id;
 	}
 	
+	@Column (name="content", nullable=false)
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	@Column (name="creation_date")
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getInsertDate() {
-		return insertDate;
+	public Date getDate() {
+		return date;
 	}
-	public void setInsertDate(Date insertDate) {
-		this.insertDate = insertDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 	@ManyToOne

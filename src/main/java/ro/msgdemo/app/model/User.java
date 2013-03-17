@@ -1,5 +1,6 @@
 package ro.msgdemo.app.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ public class User {
 	private int id;
 	private String name;
 	private String pass;
-	private List<Message> megs;
+	private List<Message> megs = new ArrayList<Message>();
 	
 	@Id @GeneratedValue (strategy=GenerationType.AUTO)
 	@Column (name="user_id")
