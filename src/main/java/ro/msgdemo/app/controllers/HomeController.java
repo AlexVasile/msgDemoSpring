@@ -1,9 +1,5 @@
 package ro.msgdemo.app.controllers;
 
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,17 +16,13 @@ import ro.msgdemo.app.service.MsgService;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	@Qualifier("msgService")
 	MsgService msgService;
 	
-	@RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
+	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
+	public String home(Model model) {
 		model.addAttribute("msgs", msgService.getAllMessages());
-		
 		return "home";
 	}
 	
@@ -48,6 +40,6 @@ public class HomeController {
 			msgService.saveMessage(msg, username);
 		}
 		
-		return "redirect:home";
+		return "redirect:/";
 	}
 }

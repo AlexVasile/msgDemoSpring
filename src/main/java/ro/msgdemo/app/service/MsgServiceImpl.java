@@ -15,13 +15,25 @@ import ro.msgdemo.app.model.User;
 
 @Service(value="msgService")
 @Transactional
-public class ServiceImpl implements MsgService {
+public class MsgServiceImpl implements MsgService {
 	
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	private static final String defaultUsername = "anonymous";
 
+	@Override
+	public Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
+	
+	@Override
+	public List<Message> getAllMessages() {
+		Query query = getSession().createQuery("from Message m " +
+				"order by m.date desc");
+		return (List<Message>) query.list();
+	}
+	
 	@Override
 	public Message saveMessage(String content, String username) {
 		User user = null;
@@ -39,19 +51,9 @@ public class ServiceImpl implements MsgService {
 		return msg;
 	}
 
-	@Override
-	public List<Message> getAllMessages() {
-		Query query = getSession().createQuery("from Message m order by m.id desc");
-		return (List<Message>) query.list();
-	}
-
-	@Override
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
-
 	private User getUser(String username) {
-		Query query = getSession().createQuery("from User u where u.name = :username");
+		Query query = getSession().createQuery("from User u " +
+				"where u.name = :username");
 		query.setString("username", username);
 		return (User) query.uniqueResult();
 	}
