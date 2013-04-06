@@ -15,6 +15,8 @@ import javax.persistence.Table;
 @Table (name="USERS")
 public class User {
 
+	public static final String DEFAULT_USERNAME = "anonymous";
+	
 	private int id;
 	private String name;
 	private String pass;

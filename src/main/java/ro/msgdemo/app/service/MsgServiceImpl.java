@@ -20,7 +20,6 @@ public class MsgServiceImpl implements MsgService {
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
-	private static final String defaultUsername = "anonymous";
 
 	@Override
 	public Session getSession() {
@@ -38,7 +37,7 @@ public class MsgServiceImpl implements MsgService {
 	public Message saveMessage(String content, String username) {
 		User user = null;
 		if (username == null || username.equals("")) {
-			username = defaultUsername;
+			username = User.DEFAULT_USERNAME;
 		}
 		user = getUser(username);
 		if (user == null) {
