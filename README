@@ -1,0 +1,4 @@
+msgDemoSpring and msgDemoPlay are two basic web applications that do the same thing.
+The goal of the two projects is to make a small comparison between the two frameworks used(Spring MVC and Play framework).
+There are only two requests: a GET request that lists all the messages from the database and a POST request that adds a new message.
+Both connect to the same database using Hibernate and Ebean(included in Play framework) ORMs. 
